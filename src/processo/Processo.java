@@ -78,7 +78,20 @@ public class Processo {
 
 	public Noh metodo2(List<Map<String, String>> listaDados) {
 		// TODO Julio
-		return null;
+		Map<String, String> Risco = listaDados.get(0);
+		List<String> classeValores;
+		String classeValoresReturned;
+
+		for (String key : Risco.keySet()) {
+		    String value = example.get(key);
+		    if(!classeValores.contains(value)){
+			classeValoresReturned.concat(","+value);
+			classeValores.add(value);
+		    }
+		}
+		Noh novoNoh = new Noh();
+		novoNoh.setValorClasseFolha(classeValoresReturned + " Risco");
+		return novoNoh;
 	}
 
 	public Aux3 metodo3(Set<String> listaProps) {
