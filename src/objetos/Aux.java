@@ -13,10 +13,6 @@ public class Aux {
 		
 	}
 
-	public Aux(List<Map<String, String>> listaDados) {
-		setListaDados(listaDados);
-	}
-
 	public List<Map<String, String>> getListaDados() {
 		return listaDados;
 	}
@@ -33,11 +29,14 @@ public class Aux {
 			tamanhoAnterior = tamanhoAtual;
 		}
 		this.listaDados = listaDados;
-		this.setProp = this.listaDados.get(0).keySet();
 	}
 
 	public Set<String> getSetProp() {
 		return this.setProp;
+	}
+
+	public void setSetProp(Set<String> setProp) {
+		this.setProp = setProp;
 	}
 
 }

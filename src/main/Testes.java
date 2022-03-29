@@ -69,6 +69,7 @@ public class Testes {
 
 	private void teste_aux_set_lista_dados() {
 		// TODO Joao
+		// NAO VAI PRECISAR
 
 		System.out.println("Deve mandar uma lista com dois hashmaps com tamanhos iguais, deve funcionar");
 
@@ -81,6 +82,8 @@ public class Testes {
 //		Aux aux1_erro = new Aux();
 ////		// ver o método exemplo_aux abaixo para saber como fazer a lista nesse caso
 //		aux1_erro.setListaDados(null);
+		
+		
 	}
 
 	private void teste_prepara() {
@@ -115,7 +118,7 @@ public class Testes {
 
 	private void teste_metodo_7() {
 		// TODO Depois, João
-		System.out.println("Deve setar no Noh o Prop, e setar o filho dela e o ramo, de acordo com o aux que tiver");
+		System.out.println("Deve setar no Noh o Prop, e setar o ramo dela e adiciona na lista de filhos, de acordo com o aux que tiver");
 //		Noh resultado = new Noh();
 //		Aux2 aux2 = new Aux2();
 //		aux2.setNohAtual(null);
@@ -163,7 +166,7 @@ public class Testes {
 	}
 
 	private void teste4() {
-		System.out.println("Deve selecionar uma propriedade da lista Prop, ele recebe a lista prop"
+		System.out.println("Deve selecionar uma propriedade da SET Prop, ele recebe a lista prop"
 				+ "\n retira o primeiro item, cria uma copia e retorna o Aux3");
 		// TODO Joao
 //		Set<String> listaProps = new HashSet<String>();

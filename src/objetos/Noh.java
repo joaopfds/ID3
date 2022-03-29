@@ -1,22 +1,24 @@
 package objetos;
 
+import java.util.List;
+
 public class Noh {
 
 	String classeNome;
 	String nomePropNoh;
 	String valorPropRamo;
 	String valorClasseFolha;
-	Noh filho;
+	List<Noh> filhos;
 
 	public Noh() {
 
 	}
 
-	public Noh(String classeNome, String nomePropNoh, String valorPropRamo, String valorClasseFolha, Noh filho) {
+	public Noh(String classeNome, String nomePropNoh, String valorPropRamo, String valorClasseFolha, List<Noh> filho) {
 		this.nomePropNoh = nomePropNoh;
 		this.valorPropRamo = valorPropRamo;
 		this.valorClasseFolha = valorClasseFolha;
-		this.filho = filho;
+		this.filhos = filho;
 		this.classeNome = classeNome;
 	}
 
@@ -52,11 +54,11 @@ public class Noh {
 		this.valorClasseFolha = valorClasseFolha;
 	}
 
-	public Noh getFilho() {
-		return filho;
+	public List<Noh> getFilhos() {
+		return filhos;
 	}
 
-	public void setFilho(Noh filho) {
-		this.filho = filho;
+	public void setFilhos(List<Noh> filhos) {
+		this.filhos = filhos;
 	}
 }

@@ -33,7 +33,10 @@ public class Processo {
 			listaDados.add(dadoMap);
 		}
 		
-		Aux aux1 = new Aux(listaDados);
+		Aux aux1 = new Aux();
+		aux1.setListaDados(listaDados);
+		aux1.setSetProp(listaDados.get(0).keySet());
+
 		return aux1;
 		
 		//	Noh retorno = new Noh();
@@ -102,6 +105,7 @@ public class Processo {
 			
 			aux1 = new Aux();
 			aux1.setListaDados(particaoV);
+			aux1.setSetProp(aux3.getCopiaSetProps());
 			
 			induzirArvore(aux1, novoNoh);
 		}
@@ -127,8 +131,8 @@ public class Processo {
 		
 		Noh novoNoh = new Noh();
 		
-		resultado.setFilho(novoNoh);
-		
+		resultado.getFilhos().add(novoNoh);
+				
 		return novoNoh;
 	}
 }
