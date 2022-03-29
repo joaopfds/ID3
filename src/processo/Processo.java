@@ -83,7 +83,7 @@ public class Processo {
 		String classeValoresReturned;
 
 		for (String key : Risco.keySet()) {
-		    String value = example.get(key);
+		    String value = Risco.get(key);
 		    if(!classeValores.contains(value)){
 			classeValoresReturned.concat(","+value);
 			classeValores.add(value);
