@@ -5,8 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import objetos.Aux;
-import objetos.Request;
+import objetos.AuxProcesso;
 import processo.Processo;
 
 public class Testes {
@@ -26,7 +25,7 @@ public class Testes {
 		System.err.println("\n ->>> 4. Teste prepara: ");
 		teste_prepara();
 		System.out.println();
-		System.err.println("\n ->>> 5. Teste Método 0: ");
+		System.err.println("\n ->>> 5. Teste MÃ©todo 0: ");
 		teste_metodo0();
 		System.err.println("\n ->>> 6. Teste 0,5: ");
 		teste_metodo0_5();
@@ -44,9 +43,9 @@ public class Testes {
 		teste6();
 		System.err.println("\n ->>> 13. Teste 7: ");
 		teste7();
-		System.err.println("\n ->>> 14. Teste Método 7: ");
+		System.err.println("\n ->>> 14. Teste MÃ©todo 7: ");
 		teste_metodo_7();
-		System.err.println("\n ->>> 15. Teste Método 5: ");
+		System.err.println("\n ->>> 15. Teste MÃ©todo 5: ");
 		teste_metodo_5();
 	}
 
@@ -56,14 +55,14 @@ public class Testes {
 		System.out.println("Deve mandar uma lista com duas classes iguais, deve funcionar");
 
 //		Request req_ok = new Request();
-////		// ver o método teste_prepara abaixo para saber como fazer a lista nesse caso (se ele estiver correto, deve estar)
+////		// ver o mÃ©todo teste_prepara abaixo para saber como fazer a lista nesse caso (se ele estiver correto, deve estar)
 //		req_ok.setListaDadosEClasse(null);
 		
 		System.out.println("Deve mandar uma lista com duas classes"
-				+ "\n Deve dar erro, pois têm classes diferentes");
+				+ "\n Deve dar erro, pois tÃªm classes diferentes");
 		
 //		Request req_erro = new Request();
-////		// ver o método teste_prepara abaixo para saber como fazer a lista nesse caso (se ele estiver correto, deve estar)
+////		// ver o mÃ©todo teste_prepara abaixo para saber como fazer a lista nesse caso (se ele estiver correto, deve estar)
 //		req_erro.setListaDadosEClasse(null);
 	}
 
@@ -74,13 +73,13 @@ public class Testes {
 		System.out.println("Deve mandar uma lista com dois hashmaps com tamanhos iguais, deve funcionar");
 
 //		Aux aux1_ok = new Aux();
-////		// ver o método exemplo_aux abaixo para saber como fazer a lista nesse caso
+////		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer a lista nesse caso
 //		aux1_ok.setListaDados(null);
 
 		System.out.println("Deve mandar uma lista com dois hashmaps, um com classe e uma propriedade e outro com classe e duas propriedades"
-				+ "\n Deve dar erro, pois têm tamanhos diferentes");	
+				+ "\n Deve dar erro, pois tÃªm tamanhos diferentes");	
 //		Aux aux1_erro = new Aux();
-////		// ver o método exemplo_aux abaixo para saber como fazer a lista nesse caso
+////		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer a lista nesse caso
 //		aux1_erro.setListaDados(null);
 		
 		
@@ -112,12 +111,12 @@ public class Testes {
 	}
 
 	private void teste_metodo_5() {
-		// TODO Depois, João
-		System.out.println("Por último");
+		// TODO Depois, JoÃ£o
+		System.out.println("Por Ãºltimo");
 	}
 
 	private void teste_metodo_7() {
-		// TODO Depois, João
+		// TODO Depois, JoÃ£o
 		System.out.println("Deve setar no Noh o Prop, e setar o ramo dela e adiciona na lista de filhos, de acordo com o aux que tiver");
 //		Noh resultado = new Noh();
 //		Aux2 aux2 = new Aux2();
@@ -130,13 +129,13 @@ public class Testes {
 
 	private void teste7() {
 		// TODO Depois, Julio
-		System.out.println("Deve fazer a partição."
+		System.out.println("Deve fazer a partiÃ§Ã£o."
 				+ "\n Percorre toda a lista Dados (aux1) e retorna aqueles que o valor do atributo seja = valor do loop"
-				+ "\n só olha as linhas (List), não olha as colunas (HashMap), talvez precise de um bool <<contem>>");
+				+ "\n sÃ³ olha as linhas (List), nÃ£o olha as colunas (HashMap), talvez precise de um bool <<contem>>");
 		
 //		Aux aux1 = new Aux();
 //		aux1.setListaDados(null);
-//		// ver o método exemplo_aux abaixo para saber como fazer o aux1 nesse caso
+//		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer o aux1 nesse caso
 //		
 //		List<Map<String, String>> particaoV = new ArrayList<Map<String, String>>();
 //
@@ -149,12 +148,12 @@ public class Testes {
 	private void teste6() {
 		// TODO Rafael
 		System.out.println("Faz o loop na lista de valores do Aux4, seta o valor ramo no aux");	
-		System.out.println("Não é necessário");
-		System.out.println("Mas antes só manda um valor na lista de valores (aux4) pro metodo5 pra ver o que dá.");
+		System.out.println("NÃ£o Ã© necessÃ¡rio");
+		System.out.println("Mas antes sÃ³ manda um valor na lista de valores (aux4) pro metodo5 pra ver o que dÃ¡.");
 	}
 
 	private void teste5() {
-		System.out.println("Recebe o aux3, vê a prop tirada, busca os valores da prop tirada e colocam eles em "
+		System.out.println("Recebe o aux3, vÃª a prop tirada, busca os valores da prop tirada e colocam eles em "
 				+ "\n uma lista de valores, no Aux4"
 				+ "\n ver https://mkyong.com/java/java-get-keys-from-value-hashmap/");	
 		// TODO Rafael
@@ -174,29 +173,55 @@ public class Testes {
 	}
 
 	private void teste3() {
-		System.out.println("Deve receber uma lista com todos elementos e classes originais (só alta e moderada) "
-				+ "\n deve retornar um nó com valorClasse preenchido com alta, moderada -"
+		System.out.println("Deve receber uma lista com todos elementos e classes originais (sÃ³ alta e moderada) "
+				+ "\n deve retornar um nÃ³ com valorClasse preenchido com alta, moderada -"
 				+ "\n ele itera sobre as classeValor e separa por virgula");
 		// TODO Julio
 		// Aux aux1 = new Aux();
-		// ver o método exemplo_aux abaixo para saber como fazer o aux1 nesse caso
+		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer o aux1 nesse caso
 		// p.metodo2(aux1);
 	}
 
 	private void teste2() {
-		System.out.println("No induzir arvore deve ter um if que verifica se o ListaDados tem só classes (só alta e moderada), sem valores");
+		System.out.println("No induzir arvore deve ter um if que verifica se o ListaDados tem sÃ³ classes (sÃ³ alta e moderada), sem valores");
 		// TODO Julio
 		// Aux aux1 = new Aux();
-		// ver o método exemplo_aux abaixo para saber como fazer o aux1 nesse caso
+		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer o aux1 nesse caso
 		// p.metodo1_5(aux1);
 	}
 
 	private void teste1() {
 		System.out.println("Deve receber uma lista com todos os elementos da mesma classe (todos risco alto) e "
-				+ "\n retornar nó com valor preenchido com alto, por exemplo");		
+				+ "\n retornar nÃ³ com valor preenchido com alto, por exemplo");		
 		// TODO Joao
+		List<Map<Integer, String>> listadado = new ArrayList<Map<Integer, String>>();
+		
+		Map<Integer, String> mapi1 = new HashMap<Integer, String>();
+		Map<Integer, String> mapi2 = new HashMap<Integer, String>();
+		Map<Integer, String> mapi3 = new HashMap<Integer, String>();
+		
+		mapi1.put(1, "Risco");
+		mapi1.put(2, "alto");
+		mapi1.put(3, "alto");
+		mapi1.put(4, "alto");
+		
+		mapi2.put(1,"Historico");
+		mapi2.put(2,"baixo");
+		mapi2.put(3,"baixo");
+		mapi2.put(4, "baixo");
+		
+		mapi3.put(1,"Divida");
+		mapi3.put(2,"alto");
+		mapi3.put(3,"alto");
+		mapi3.put(4,"alto");
+		
+		listadado.add(mapi1);
+		listadado.add(mapi2);
+		listadado.add(mapi3);
+		
+		
 		// Aux aux1 = new Aux();
-		// ver o método exemplo_aux abaixo para saber como fazer o aux1 nesse caso
+		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer o aux1 nesse caso
 		// p.metodo1(aux1);
 	}
 
@@ -207,13 +232,13 @@ public class Testes {
 	}
 
 	private void teste_metodo0() {
-		System.out.println("Deve chamar o induzir árvore, que cria um aux, e é só");
-		System.out.println("Não fazer agora");
+		System.out.println("Deve chamar o induzir Ã¡rvore, que cria um aux, e Ã© sÃ³");
+		System.out.println("NÃ£o fazer agora");
 		// p.induzirArvore
 	}
 
-	private Aux exemplo_aux() {
-		Aux aux1 = new Aux();
+	private AuxProcesso exemplo_aux() {
+		AuxProcesso aux1 = new AuxProcesso();
 		List<Map<String, String>> listaDados = new ArrayList<Map<String, String>>();
 		Map<String, String> d1 = new HashMap<String, String>();
 		d1.put("Risco", "Alto");
