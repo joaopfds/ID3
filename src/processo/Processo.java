@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import objetos.Aux;
 import objetos.Aux2;
 import objetos.Aux3;
 import objetos.Aux4;
+import objetos.AuxProcesso;
 import objetos.Dado;
 import objetos.DadoEClasse;
 import objetos.Noh;
@@ -17,7 +17,7 @@ import objetos.Request;
 
 public class Processo {
 
-	public Aux prepara(Request request) {
+	public AuxProcesso prepara(Request request) {
 		// TODO Rafael
 
 		List<Map<String, String>> listaDados = new ArrayList<Map<String, String>>();
@@ -33,7 +33,7 @@ public class Processo {
 			listaDados.add(dadoMap);
 		}
 		
-		Aux aux1 = new Aux();
+		AuxProcesso aux1 = new AuxProcesso();
 		aux1.setListaDados(listaDados);
 		aux1.setSetProp(listaDados.get(0).keySet());
 
@@ -43,7 +43,7 @@ public class Processo {
 		// induzirArvore(aux1, retorno);
 	}
 	
-	public void induzirArvore(Aux aux1, Noh retorno) {
+	public void induzirArvore(AuxProcesso aux1, Noh retorno) {
 
 		Aux2 aux2 = new Aux2();
 		 if (metodo0(aux1.getListaDados())) {
@@ -78,11 +78,24 @@ public class Processo {
 
 	public Noh metodo2(List<Map<String, String>> listaDados) {
 		// TODO Julio
-		return null;
+		Map<String, String> Risco = listaDados.get(0);
+		List<String> classeValores = new ArrayList<String>();							
+		String classeValoresReturned = new String();
+
+		for (String key : Risco.keySet()) {
+		    String value = Risco.get(key);
+		    if(!classeValores.contains(value)){
+			classeValoresReturned.concat(","+value);
+			classeValores.add(value);
+		    }
+		}
+		Noh novoNoh = new Noh();
+		novoNoh.setValorClasseFolha(classeValoresReturned + " Risco");
+		return novoNoh;
 	}
 
 	public Aux3 metodo3(Set<String> listaProps) {
-		// TODO João
+		// TODO JoÃ£o
 		return null;
 	}
 
@@ -91,9 +104,9 @@ public class Processo {
 		return null;
 	}
 
-	public void metodo5(Aux aux1, Aux2 aux2, Aux4 aux4, Aux3 aux3, Noh retorno, List<Map<String, String>> listaDados) {
+	public void metodo5(AuxProcesso aux1, Aux2 aux2, Aux4 aux4, Aux3 aux3, Noh retorno, List<Map<String, String>> listaDados) {
 		//TODO Rafael
-		// TODO Depois, João
+		// TODO Depois, JoÃ£o
 		for (String valor : aux4.getSetValores()) {
 			aux2.setValor(valor);
 			aux2.setRamoAtual(valor);
@@ -103,7 +116,7 @@ public class Processo {
 			
 			Noh novoNoh = metodo7(retorno, aux2);
 			
-			aux1 = new Aux();
+			aux1 = new AuxProcesso();
 			aux1.setListaDados(particaoV);
 			aux1.setSetProp(aux3.getCopiaSetProps());
 			
@@ -111,15 +124,30 @@ public class Processo {
 		}
 	}
 
-	public void metodo6_construirParticao(String prop, String valor, List<Map<String, String>> listaDados,
-			List<Map<String, String>> particaoV) {
+	public List<Map<Integer, String>> metodo6_construirParticao(Integer prop, String valor, List<Map<Integer, String>> listaDados,
+			List<Map<Integer, String>> particaoV) {
 		// TODO Depois, Julio
-
-		for (Map<String, String> map : listaDados) {
-			if (map.get(prop) == valor) {
-				particaoV.add(map);
+		Map<Integer, String> Coluna = particaoV.get(prop);
+		List<Integer> keys = new ArrayList<Integer>();
+		for(Integer key : Coluna.keySet()) {
+			String value = Coluna.get(key);
+			if(value == valor) {
+				keys.add(key);
 			}
 		}
+		
+		List<Map<Integer, String>> NovaParticao = new ArrayList<Map<Integer, String>>();
+		
+		for(Map<Integer, String> map : listaDados) {
+			Map<Integer, String> newMap = new HashMap<Integer, String>();
+			for(Integer key : keys) {
+				newMap.put(key, map.get(key));
+			}
+			NovaParticao.add(newMap);
+		}
+		
+		return NovaParticao;
+		
 	}
 	
 	public Noh metodo7(Noh resultado, Aux2 aux2) {
