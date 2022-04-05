@@ -203,6 +203,7 @@ public class Testes {
 		mapi1.put(1, "Risco");
 		mapi1.put(2, "alto");
 		mapi1.put(3, "alto");
+		//mapi1.put(3, "baixo");
 		mapi1.put(4, "alto");
 		
 		mapi2.put(1,"Historico");
@@ -220,9 +221,10 @@ public class Testes {
 		listadado.add(mapi3);
 		
 		
-		// Aux aux1 = new Aux();
+		 //AuxProcesso aux1 = new AuxProcesso();
+		//aux1.setListaDados(listadado);
 		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer o aux1 nesse caso
-		// p.metodo1(aux1);
+		System.out.println(p.metodo1(listadado));
 	}
 
 	private void teste_metodo0_5() {
