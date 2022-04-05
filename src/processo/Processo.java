@@ -66,9 +66,16 @@ public class Processo {
 		return null;
 	}
 	
-	public Noh metodo1(List<Map<String, String>> listaDados) {
-		// TODO Joao
-		return null;
+	public Boolean /*Noh*/ metodo1(List<Map<Integer, String>> listaDados) {
+		// TODO Joao		
+		 for (int i = 2; i < listaDados.get(0).get(1).length(); i++) {
+
+			if(!listaDados.get(0).get(i).equals(listaDados.get(0).get(2))) {
+				return false;
+			}
+		 }
+		
+		return true;
 	}
 	
 	public Boolean metodo1_5(List<Map<String, String>> listaDados) {
