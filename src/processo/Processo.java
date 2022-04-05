@@ -68,7 +68,7 @@ public class Processo {
 	
 	public Boolean /*Noh*/ metodo1(List<Map<Integer, String>> listaDados) {
 		// TODO Joao		
-		 for (int i = 2; i < listaDados.get(0).get(1).length(); i++) {
+		 for (int i = 2; i < listaDados.get(0).size(); i++) {
 
 			if(!listaDados.get(0).get(i).equals(listaDados.get(0).get(2))) {
 				return false;
