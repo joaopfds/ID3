@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import objetos.AuxProcesso;
+//import objetos.AuxProcesso;
+import objetos.Noh;
 import processo.Processo;
 
 public class Testes {
@@ -190,7 +191,7 @@ public class Testes {
 		// p.metodo1_5(aux1);
 	}
 
-	private void teste1() {
+	void teste1() {
 		System.out.println("Deve receber uma lista com todos os elementos da mesma classe (todos risco alto) e "
 				+ "\n retornar nÃ³ com valor preenchido com alto, por exemplo");		
 		// TODO Joao
@@ -199,32 +200,49 @@ public class Testes {
 		Map<Integer, String> mapi1 = new HashMap<Integer, String>();
 		Map<Integer, String> mapi2 = new HashMap<Integer, String>();
 		Map<Integer, String> mapi3 = new HashMap<Integer, String>();
+
+		Map<String, Integer> props = new HashMap<String, Integer>();
+		props.put("Historico", 1);
+		props.put("Divida", 2);
 		
-		mapi1.put(1, "Risco");
+		mapi1.put(1, "alto");
 		mapi1.put(2, "alto");
 		mapi1.put(3, "alto");
 		//mapi1.put(3, "baixo");
 		mapi1.put(4, "alto");
+		mapi1.put(5, "baixo");
+		mapi1.put(6, "baixo");
+		mapi1.put(7, "alto");
 		
-		mapi2.put(1,"Historico");
-		mapi2.put(2,"baixo");
+		mapi2.put(1,"baixo");
+		mapi2.put(2,"alto");
 		mapi2.put(3,"baixo");
-		mapi2.put(4, "baixo");
+		mapi2.put(4, "alto");
+		mapi2.put(5, "alto");
+		mapi2.put(6, "baixo");
+		mapi2.put(7, "alto");
 		
-		mapi3.put(1,"Divida");
+		
+		mapi3.put(1,"alto");
 		mapi3.put(2,"alto");
 		mapi3.put(3,"alto");
 		mapi3.put(4,"alto");
+		mapi3.put(5,"alto");
+		mapi3.put(6,"alto");
+		mapi3.put(7,"alto");
+		
 		
 		listadado.add(mapi1);
 		listadado.add(mapi2);
 		listadado.add(mapi3);
 		
-		
 		 //AuxProcesso aux1 = new AuxProcesso();
 		//aux1.setListaDados(listadado);
 		// ver o mÃ©todo exemplo_aux abaixo para saber como fazer o aux1 nesse caso
 		System.out.println(p.metodo1(listadado));
+		System.out.println("Vamos Testar o Induzir arvore.");
+		Noh noFinal = p.induzirArvore(listadado, props);
+		System.out.println(noFinal.getFilhos());
 	}
 
 	private void teste_metodo0_5() {
@@ -239,25 +257,25 @@ public class Testes {
 		// p.induzirArvore
 	}
 
-	private AuxProcesso exemplo_aux() {
-		AuxProcesso aux1 = new AuxProcesso();
-		List<Map<String, String>> listaDados = new ArrayList<Map<String, String>>();
-		Map<String, String> d1 = new HashMap<String, String>();
-		d1.put("Risco", "Alto");
-		d1.put("Historico de Credito", "Baixo");
-		d1.put("Divida", "Alta");
-		
-		Map<String, String> d2 = new HashMap<String, String>();
-		d1.put("Risco", "Baixo");
-		d1.put("Historico de Credito", "Medio");
-		d1.put("Divida", "Baixa");
-		
-		listaDados.add(d1);
-		listaDados.add(d2);
-		
-		aux1.setListaDados(listaDados);
-		return aux1;
-	}
+//	private AuxProcesso exemplo_aux() {
+//		AuxProcesso aux1 = new AuxProcesso();
+//		List<Map<String, String>> listaDados = new ArrayList<Map<String, String>>();
+//		Map<String, String> d1 = new HashMap<String, String>();
+//		d1.put("Risco", "Alto");
+//		d1.put("Historico de Credito", "Baixo");
+//		d1.put("Divida", "Alta");
+//		
+//		Map<String, String> d2 = new HashMap<String, String>();
+//		d1.put("Risco", "Baixo");
+//		d1.put("Historico de Credito", "Medio");
+//		d1.put("Divida", "Baixa");
+//		
+//		listaDados.add(d1);
+//		listaDados.add(d2);
+//		
+//		aux1.setListaDados(listaDados);
+//		return aux1;
+//	}
 	
 	
 	public void teste_hashmap() {
