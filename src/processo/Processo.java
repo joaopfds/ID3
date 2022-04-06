@@ -2,6 +2,7 @@ package processo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.Set;
 import objetos.Aux2;
 import objetos.Aux3;
 import objetos.Aux4;
-import objetos.AuxProcesso;
+//import objetos.AuxProcesso;
 import objetos.Dado;
 import objetos.DadoEClasse;
 import objetos.Noh;
@@ -17,83 +18,97 @@ import objetos.Request;
 
 public class Processo {
 
-	public AuxProcesso prepara(Request request) {
-		// TODO Rafael
-
-		List<Map<String, String>> listaDados = new ArrayList<Map<String, String>>();
-
-		for ( DadoEClasse dadosEClasse : request.getListaDadosEClasse()) {
-			Map<String, String> dadoMap = new HashMap<String, String>();
-
-			dadoMap.put(dadosEClasse.getClasse().getClasseNome(), dadosEClasse.getClasse().getClasseValor());
-			for (Dado dado : dadosEClasse.getDado()) {
-				dadoMap.put(dado.getChave(), dado.getValor());
+//	public AuxProcesso prepara(Request request) {
+//		// TODO Rafael
+//
+//		List<Map<String, String>> listaDados = new ArrayList<Map<String, String>>();
+//
+//		for ( DadoEClasse dadosEClasse : request.getListaDadosEClasse()) {
+//			Map<String, String> dadoMap = new HashMap<String, String>();
+//
+//			dadoMap.put(dadosEClasse.getClasse().getClasseNome(), dadosEClasse.getClasse().getClasseValor());
+//			for (Dado dado : dadosEClasse.getDado()) {
+//				dadoMap.put(dado.getChave(), dado.getValor());
+//			}
+//			
+//			listaDados.add(dadoMap);
+//		}
+//		
+//		AuxProcesso aux1 = new AuxProcesso();
+//		aux1.setListaDados(listaDados);
+//		aux1.setSetProp(listaDados.get(0).keySet());
+//
+//		return aux1;
+//		
+//		//	Noh retorno = new Noh();
+//		// induzirArvore(aux1, retorno);
+//	}
+	
+	public Noh induzirArvore(List<Map<Integer, String>> listaDados, Map<String, Integer> props) {
+		Noh retorno = new Noh();
+		String classeValor = metodo1(listaDados);
+		if (!classeValor.isEmpty()) {
+			retorno.setClasseNome(classeValor);
+			return retorno;
+		} else if (props.isEmpty()) {
+			return metodo2(listaDados);
+		} else {
+			String prop = metodo_5(props);
+			Integer prop_index = props.get(prop);
+			
+			Noh nohRaiz = new Noh();
+			nohRaiz.setNomePropNoh(prop);
+			
+			props.remove(prop);
+			
+			List<String> lista = new ArrayList<String>();
+			Noh noh3 = new Noh();
+			for (String valor : metodo7(listaDados, prop_index)) {
+				Noh noh2 = new Noh();
+				noh2.setValorPropRamo(valor);
+				nohRaiz.addFilhos(noh2);
+				List<Map<Integer, String>> listaDados_copia = metodo6_construirParticao(prop_index, valor, listaDados);
+				
+				noh3 = induzirArvore(listaDados_copia, props);
+				noh2.addFilhos(noh3);
 			}
 			
-			listaDados.add(dadoMap);
+			return nohRaiz;
 		}
-		
-		AuxProcesso aux1 = new AuxProcesso();
-		aux1.setListaDados(listaDados);
-		aux1.setSetProp(listaDados.get(0).keySet());
-
-		return aux1;
-		
-		//	Noh retorno = new Noh();
-		// induzirArvore(aux1, retorno);
 	}
 	
-	public void induzirArvore(AuxProcesso aux1, Noh retorno) {
-
-		Aux2 aux2 = new Aux2();
-		 if (metodo0(aux1.getListaDados())) {
-			retorno = metodo1(aux1.getListaDados());
-		 }
-		
-		 else if (metodo1_5(aux1.getListaDados())) {
-			retorno = metodo2(aux1.getListaDados());
-		 }
-		
-		 else {
-			Aux3 aux3 = metodo3(aux1.getSetProp());
-			Aux4 aux4 = metodo4(aux3);
-			metodo5(aux1, aux2, aux4, aux3, retorno, aux1.getListaDados());;
-		 }
-	}
-
-	public Boolean metodo0(List<Map<String, String>> listaDados) {
-		// TODO Joao
-		return null;
-	}
-	
-	public Boolean /*Noh*/ metodo1(List<Map<Integer, String>> listaDados) {
+	public String /*Noh*/ metodo1(List<Map<Integer, String>> listaDados) {
 		// TODO Joao		
-		 for (int i = 2; i < listaDados.get(0).size(); i++) {
-
-			if(!listaDados.get(0).get(i).equals(listaDados.get(0).get(2))) {
-				return false;
-			}
-		 }
+		String check = new String();
+		int i = 0;
+		Map<Integer, String> Risco = listaDados.get(0);
 		
-		return true;
+		for (Integer key : Risco.keySet()) {
+		    String value = Risco.get(key);
+		    if(!value.equals(check)) {
+		    	check = value;
+		    	i++;
+		    }
+		    if(i > 1) {
+				return "";
+			}
+		}
+
+		 return listaDados.get(0).get(1);
+		
 	}
 	
-	public Boolean metodo1_5(List<Map<String, String>> listaDados) {
+	public Noh metodo2(List<Map<Integer, String>> listaDados) {
 		// TODO Julio
-		return null;
-	}
-
-	public Noh metodo2(List<Map<String, String>> listaDados) {
-		// TODO Julio
-		Map<String, String> Risco = listaDados.get(0);
+		Map<Integer, String> Risco = listaDados.get(0);
 		List<String> classeValores = new ArrayList<String>();							
 		String classeValoresReturned = new String();
-
-		for (String key : Risco.keySet()) {
+		
+		for (Integer key : Risco.keySet()) {
 		    String value = Risco.get(key);
 		    if(!classeValores.contains(value)){
-			classeValoresReturned.concat(","+value);
-			classeValores.add(value);
+		    	classeValoresReturned = classeValoresReturned.concat(","+value);
+		    	classeValores.add(value);
 		    }
 		}
 		Noh novoNoh = new Noh();
@@ -101,40 +116,21 @@ public class Processo {
 		return novoNoh;
 	}
 
-	public Aux3 metodo3(Set<String> listaProps) {
-		// TODO JoÃ£o
-		return null;
-	}
-
-	public Aux4 metodo4(Aux3 aux3) {
-		// TODO Rafael
-		return null;
-	}
-
-	public void metodo5(AuxProcesso aux1, Aux2 aux2, Aux4 aux4, Aux3 aux3, Noh retorno, List<Map<String, String>> listaDados) {
-		//TODO Rafael
-		// TODO Depois, JoÃ£o
-		for (String valor : aux4.getSetValores()) {
-			aux2.setValor(valor);
-			aux2.setRamoAtual(valor);
-			
-			List<Map<String, String>> particaoV = new ArrayList<Map<String, String>>();
-			metodo6_construirParticao(aux3.getPropTirada(), valor, aux1.getListaDados(), particaoV);
-			
-			Noh novoNoh = metodo7(retorno, aux2);
-			
-			aux1 = new AuxProcesso();
-			aux1.setListaDados(particaoV);
-			aux1.setSetProp(aux3.getCopiaSetProps());
-			
-			induzirArvore(aux1, novoNoh);
+	public String metodo_5(Map<String, Integer> props) {
+		int i = 0;
+		String value = new String();
+		for(String key : props.keySet()) {
+			value = key;
+			if(key != "Risco") { // GAMBIARRA PARA PULAR O RISCO.
+				break;
+			}
 		}
+		return value;
 	}
-
-	public List<Map<Integer, String>> metodo6_construirParticao(Integer prop, String valor, List<Map<Integer, String>> listaDados,
-			List<Map<Integer, String>> particaoV) {
+	
+	public List<Map<Integer, String>> metodo6_construirParticao(Integer prop_index, String valor, List<Map<Integer, String>> listaDados) {
 		// TODO Depois, Julio
-		Map<Integer, String> Coluna = particaoV.get(prop);
+		Map<Integer, String> Coluna = listaDados.get(prop_index);
 		List<Integer> keys = new ArrayList<Integer>();
 		for(Integer key : Coluna.keySet()) {
 			String value = Coluna.get(key);
@@ -157,17 +153,22 @@ public class Processo {
 		
 	}
 	
-	public Noh metodo7(Noh resultado, Aux2 aux2) {
-		// TODO Depois, Rafael
-
-		resultado.setNomePropNoh(aux2.getNohAtual());
+	public List<String> metodo7(List<Map<Integer, String>> listaDados, Integer prop_index) {
+		List<String> listaValores = new ArrayList<String>();
 		
-		resultado.setValorPropRamo(aux2.getRamoAtual());
+		Map<Integer, String> coluna_prop = listaDados.get(prop_index);
 		
-		Noh novoNoh = new Noh();
+		for (Integer key : coluna_prop.keySet()) {
+			if(key != 1) { // GAMBIARRA
+				String value = coluna_prop.get(key);
+			    if(!listaValores.contains(value)){
+			    	listaValores.add(value);
+			    }
+			}
+		    
+		}
 		
-		resultado.getFilhos().add(novoNoh);
-				
-		return novoNoh;
+		
+		return listaValores;
 	}
 }
